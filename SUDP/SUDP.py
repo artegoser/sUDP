@@ -6,11 +6,16 @@ class sUDPsocket():
         self.sock.bind(addres)
     def recvfrom(self, bytes):
         msg , address = self.sock.recvfrom(bytes)
-        if msg.decode("utf-8") == "ok":
-            return
         self.sock.sendto(("ok").encode("utf-8"),address)
         return msg, address
     #def recv(self, bytes):
     #    pass
-    def sendto(self, msg):
-        pass
+    def sendto(self, msg, address):
+        self.sock.sendto(msg,address)
+        ok , addressok = self.sock.recvfrom(bytes) #переделать в multithreading
+        if ok.decode("utf-8") == "ok" and addressok == address:
+            return True
+        elif addressok != address:
+            raise Exception("received a message from the wrong address")
+        else:
+            return False
