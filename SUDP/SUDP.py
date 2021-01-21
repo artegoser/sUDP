@@ -12,10 +12,12 @@ class sUDPsocket():
     #    pass
     def sendto(self, msg, address):
         self.sock.sendto(msg,address)
-        ok , addressok = self.sock.recvfrom(bytes) #переделать в multithreading
+        self.sock.settimeout(5)
+        ok , addressok = self.sock.recvfrom(bytes)
+        self.sock.settimeout(None)
         if ok.decode("utf-8") == "ok" and addressok == address:
             return True
         elif addressok != address:
-            raise Exception("received a message from the wrong address")
+            return "received a \"ok\" message from the wrong address"
         else:
             return False
