@@ -5,5 +5,5 @@ sock = SUDP.sUDPsocket()
 
 while True:
     print(sock.sendto(("lal").encode("utf-8"), server))
-    sock.timeout = 1 #any timeout
+    sock.retimeout = 1 #any timeout
     msg , addres = sock.recvfrom(1024)
