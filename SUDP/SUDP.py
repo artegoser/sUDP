@@ -9,8 +9,10 @@ class sUDPsocket():
         msg , address = self.sock.recvfrom(bytes)
         self.sock.sendto(("ok").encode("utf-8"),address)
         return msg, address
-    #def recv(self, bytes):
-    #    pass
+    def recv(self, bytes):
+        msg , address = self.sock.recvfrom(bytes)
+        self.sock.sendto(("ok").encode("utf-8"),address)
+        return msg
     def sendto(self, msg, address):
         self.sock.sendto(msg,address)
         self.sock.settimeout(self.timeout)
