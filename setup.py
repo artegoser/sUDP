@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
  
 setup(name='SUDP',
-      version='1.0.1',
+      version='1.1.1',
       url='https://github.com/artegoser/sUDP',
       license='MIT',
       author='artegoser',
