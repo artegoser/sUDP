@@ -36,3 +36,9 @@ class sUDPsocket():
 
     def settimeout(self, timeout):
         self.timeout = timeout
+    
+    def sendfile(self):
+        pass
+    
+    def recvfile(self):
+        pass
